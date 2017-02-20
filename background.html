@@ -1,0 +1,40 @@
+
+<script src="util.js"></script>
+<script src="db.js"></script>
+<script>
+
+function tst () {
+        alert('test !');
+}
+function init() {
+        DB.init();
+        
+        // show icon in address bar
+        chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+                if (/\.travian\./.test(tab.url)) {
+                        var img = new Object();
+                        if (Background.isOnline) {
+                                img.path = chrome.extension.getURL('icon48_online.png');
+                        } else {
+                                img.path = chrome.extension.getURL('icon48_offline.png');
+                        }
+                        img.tabId = tab.id;
+                        chrome.pageAction.setIcon(img);
+                        chrome.pageAction.show(tabId);
+                }
+        });
+        
+        chrome.pageAction.onClicked.addListener(function (tab) {
+                Background.togglePlayPause();
+        });
+        //Background.play();
+
+        Comm.register('DB.Queue.enqueue', DB.Queue.enqueue);
+        Comm.register('DB.Queue.publish', DB.Queue.publish);
+        Comm.register('DB.Queue.remove',  DB.Queue.remove);
+        Comm.register('tst', tst);
+}
+
+init();
+tst();
+</script>

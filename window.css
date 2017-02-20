@@ -1,0 +1,8 @@
+<!--
+.drag    { position: absolute; }  
+.close    { float: right; margin: 3px; border: 0px; }
+#d1        { left: 50px; top: 60px;  filter: alpha(opacity=85,style=0); -moz-opacity: 0.85; opacity: 0.85; border: 3px solid #ccc; z-index: 90; background-color: #ffb; padding: 3px; }
+#d2        { left: 140px; top: 80px;  filter: alpha(opacity=75,style=0); -moz-opacity: 0.75; opacity: 0.75; border: 3px solid #ccc; z-index: 90; background-color: #fbf; padding: 3px; }
+#d3        { left: 90px; top: 140px;  filter: alpha(opacity=95,style=0); -moz-opacity: 0.95; opacity: 0.95; border: 3px solid #ccc; z-index: 90; background-color: #bbf; padding: 3px; }
+.comment    { background-color: #fff; margin: 3px 0 0; }
+-->

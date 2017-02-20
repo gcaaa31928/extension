@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+
+  "name": "One-click Kittens",
+  "description": "This extension demonstrates a 'browser action' with kittens.",
+  "version": "1.0",
+  "background": {
+    "scripts": ["util.js","db.js","background.js"]
+  },
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "option.html"
+  },
+
+  "permissions": [
+    "tabs",
+    "background",
+    "unlimitedStorage",
+    "http://ts1.travian.tw/*",
+    "storage",
+    "*://*/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["http://ts1.travian.tw/*"],
+      "js": ["window.js","data.js","util.js","login.js","sidebar.js","db.js","sendLink.js","dorf1.js"],
+      "css":        ["window.css"],
+      "run_at": "document_end"
+    },
+    {
+      "matches":["http://ts1.travian.tw/build.php*"],
+      "js":["link.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
